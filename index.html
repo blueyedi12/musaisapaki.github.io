@@ -8,10 +8,12 @@
     :root {
       --bg: #09090b;
       --card-bg: #18181b;
-      --card-hover: #27272a;
+      --card-hover: #202024;
       --text: #f4f4f5;
       --subtext: #a1a1aa;
       --border: #27272a;
+      --accent: #7dd3c0;
+      --accent-dim: rgba(125, 211, 192, 0.15);
     }
 
     * {
@@ -23,18 +25,30 @@
 
     body {
       background-color: var(--bg);
+      background-image: radial-gradient(circle at 50% 0%, rgba(125, 211, 192, 0.08), transparent 60%);
       color: var(--text);
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 20px;
+      overflow-x: hidden;
     }
 
     .container {
       width: 100%;
       max-width: 400px;
       text-align: center;
+    }
+
+    /* ---- Load sequence ---- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes rise {
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .profile-img {
@@ -49,7 +63,23 @@
       justify-content: center;
       font-weight: bold;
       font-size: 1.5rem;
-      color: var(--subtext);
+      color: var(--accent);
+      position: relative;
+      animation-delay: 0.05s;
+      box-shadow: 0 0 0 0 var(--accent-dim);
+    }
+    .profile-img::after {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 1px solid var(--accent-dim);
+      animation: pulse-ring 2.4s ease-out 0.7s infinite;
+    }
+    @keyframes pulse-ring {
+      0%   { transform: scale(0.9); opacity: 0.8; }
+      70%  { transform: scale(1.25); opacity: 0; }
+      100% { opacity: 0; }
     }
 
     h1 {
@@ -57,12 +87,14 @@
       font-weight: 600;
       margin-bottom: 4px;
       letter-spacing: -0.02em;
+      animation-delay: 0.12s;
     }
 
     p.handle {
       color: var(--subtext);
       font-size: 0.9rem;
       margin-bottom: 32px;
+      animation-delay: 0.18s;
     }
 
     .links {
@@ -82,44 +114,85 @@
       color: var(--text);
       text-decoration: none;
       font-weight: 500;
-      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s ease, transform 0.15s ease, background-color 0.25s ease;
+      animation-delay: 0.24s;
     }
+    .links .link-card:nth-child(2) { animation-delay: 0.3s; }
+    .links .link-card:nth-child(3) { animation-delay: 0.36s; }
+
+    .link-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(120px circle at var(--x, 50%) var(--y, 50%), var(--accent-dim), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    .link-card:hover::before { opacity: 1; }
 
     .link-card:hover {
-      background-color: var(--card-hover);
+      border-color: var(--accent);
       transform: translateY(-2px);
+    }
+    .link-card:active {
+      transform: translateY(0) scale(0.98);
+      background-color: var(--card-hover);
+    }
+    .link-card:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
 
     .link-info {
       display: flex;
       align-items: center;
       gap: 12px;
+      z-index: 1;
     }
 
     .link-info svg {
       width: 20px;
       height: 20px;
       fill: currentColor;
+      transition: fill 0.25s ease, transform 0.25s ease;
+    }
+    .link-card:hover .link-info svg {
+      fill: var(--accent);
+      transform: scale(1.08);
     }
 
     .arrow {
       color: var(--subtext);
       font-size: 0.9rem;
+      z-index: 1;
+      transition: transform 0.25s ease, color 0.25s ease;
+    }
+    .link-card:hover .arrow {
+      transform: translate(2px, -2px);
+      color: var(--accent);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { animation: none; opacity: 1; transform: none; }
+      .profile-img::after { animation: none; display: none; }
+      .link-card, .link-info svg, .arrow { transition: none; }
     }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <!-- Minimalist Monogram Avatar -->
-    <div class="profile-img">M</div>
+    <div class="profile-img reveal">M</div>
 
-    <h1>Musa</h1>
-    <p class="handle">@musaisapaki</p>
+    <h1 class="reveal">Musa</h1>
+    <p class="handle reveal">@musaisapaki</p>
 
     <div class="links">
       <!-- Instagram -->
-      <a href="https://www.instagram.com/musaisapaki/" target="_blank" rel="noopener noreferrer" class="link-card">
+      <a href="https://www.instagram.com/musaisapaki/" target="_blank" rel="noopener noreferrer" class="link-card reveal">
         <div class="link-info">
           <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           <span>Instagram</span>
@@ -128,7 +201,7 @@
       </a>
 
       <!-- TikTok -->
-      <a href="https://www.tiktok.com/@musaisapaki" target="_blank" rel="noopener noreferrer" class="link-card">
+      <a href="https://www.tiktok.com/@musaisapaki" target="_blank" rel="noopener noreferrer" class="link-card reveal">
         <div class="link-info">
           <svg viewBox="0 0 24 24"><path d="M12.525 0h3.08c.012 1.08.36 2.067 1.048 2.872.684.805 1.58 1.282 2.656 1.391v3.2a6.386 6.386 0 0 1-3.704-1.18v8.666c0 1.708-.43 3.23-1.288 4.567-.859 1.336-2.023 2.34-3.49 3.01-1.468.67-3.033.882-4.697.636-1.664-.246-3.136-.97-4.417-2.172C.432 19.82-.143 18.28.016 16.58c.16-1.7.838-3.178 2.035-4.433 1.198-1.255 2.67-2.003 4.417-2.246 1.747-.243 3.398.05 4.954.88v3.31a3.528 3.528 0 0 0-2.316-.54c-.89.08-1.65.44-2.28 1.08-.63.64-.98 1.42-1.05 2.34-.07.92.17 1.76.72 2.52.55.76 1.28 1.22 2.19 1.38.91.16 1.78.02 2.61-.42.83-.44 1.42-1.08 1.77-1.92.12-.28.18-.58.18-.9V0z"/></svg>
           <span>TikTok</span>
@@ -137,7 +210,7 @@
       </a>
 
       <!-- YouTube -->
-      <a href="https://www.youtube.com/@musaisapaki" target="_blank" rel="noopener noreferrer" class="link-card">
+      <a href="https://www.youtube.com/@musaisapaki" target="_blank" rel="noopener noreferrer" class="link-card reveal">
         <div class="link-info">
           <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
           <span>YouTube</span>
@@ -146,6 +219,17 @@
       </a>
     </div>
   </div>
+
+  <script>
+    // Track pointer position per card for the hover glow
+    document.querySelectorAll('.link-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--y', `${e.clientY - rect.top}px`);
+      });
+    });
+  </script>
 
 </body>
 </html>
