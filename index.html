@@ -12,8 +12,8 @@
       --text: #f4f4f5;
       --subtext: #a1a1aa;
       --border: #27272a;
-      --accent: #7dd3c0;
-      --accent-dim: rgba(125, 211, 192, 0.15);
+      --accent: #ff6ec7;
+      --accent-dim: rgba(255, 110, 199, 0.15);
     }
 
     * {
@@ -43,12 +43,17 @@
 
     /* ---- Load sequence ---- */
     .reveal {
-      opacity: 0;
-      transform: translateY(10px);
-      animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: shake-in 0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
     }
-    @keyframes rise {
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes shake-in {
+      0%   { opacity: 0; transform: translateY(10px) scale(0.9) rotate(0deg); }
+      15%  { opacity: 1; transform: translateY(0) scale(1.03) rotate(-6deg); }
+      30%  { transform: scale(1.03) rotate(5deg); }
+      45%  { transform: scale(1.02) rotate(-4deg); }
+      60%  { transform: scale(1.01) rotate(3deg); }
+      75%  { transform: scale(1.01) rotate(-2deg); }
+      88%  { transform: scale(1) rotate(1deg); }
+      100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
     }
 
     .profile-img {
@@ -115,31 +120,31 @@
       text-decoration: none;
       font-weight: 500;
       position: relative;
-      overflow: hidden;
-      transition: border-color 0.25s ease, transform 0.15s ease, background-color 0.25s ease;
+      transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
       animation-delay: 0.24s;
+      transform-origin: center;
     }
     .links .link-card:nth-child(2) { animation-delay: 0.3s; }
     .links .link-card:nth-child(3) { animation-delay: 0.36s; }
 
-    .link-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(120px circle at var(--x, 50%) var(--y, 50%), var(--accent-dim), transparent 70%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      pointer-events: none;
-    }
-    .link-card:hover::before { opacity: 1; }
-
     .link-card:hover {
       border-color: var(--accent);
-      transform: translateY(-2px);
+      background-color: var(--accent-dim);
+      animation: shake-hover 0.4s ease-in-out;
+    }
+    @keyframes shake-hover {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      15%      { transform: translate(-3px, -1px) rotate(-2deg); }
+      30%      { transform: translate(3px, 1px) rotate(2deg); }
+      45%      { transform: translate(-3px, 1px) rotate(-1.5deg); }
+      60%      { transform: translate(3px, -1px) rotate(1.5deg); }
+      75%      { transform: translate(-2px, 0) rotate(-1deg); }
+      90%      { transform: translate(2px, 0) rotate(1deg); }
     }
     .link-card:active {
-      transform: translateY(0) scale(0.98);
+      transform: scale(0.96) !important;
       background-color: var(--card-hover);
+      animation: none;
     }
     .link-card:focus-visible {
       outline: 2px solid var(--accent);
@@ -179,6 +184,7 @@
       .reveal { animation: none; opacity: 1; transform: none; }
       .profile-img::after { animation: none; display: none; }
       .link-card, .link-info svg, .arrow { transition: none; }
+      .link-card:hover { animation: none; }
     }
   </style>
 </head>
@@ -220,16 +226,7 @@
     </div>
   </div>
 
-  <script>
-    // Track pointer position per card for the hover glow
-    document.querySelectorAll('.link-card').forEach(card => {
-      card.addEventListener('mousemove', e => {
-        const rect = card.getBoundingClientRect();
-        card.style.setProperty('--x', `${e.clientX - rect.left}px`);
-        card.style.setProperty('--y', `${e.clientY - rect.top}px`);
-      });
-    });
-  </script>
+
 
 </body>
 </html>
