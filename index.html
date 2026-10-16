@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
 
-<title>musaisapaki</title>
+  <title>musaisapaki</title>
 
   <meta name="theme-color" content="#08080b">
   <meta name="description" content="Musa's social links">
@@ -42,7 +43,7 @@
     }
 
     body {
-      min-height: 100vh;
+      min-height: 140vh; /* Forces page height so scrolling is required */
       color: var(--text);
       background:
         radial-gradient(
@@ -64,9 +65,9 @@
 
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
 
-      padding: 40px 20px;
+      padding: 60px 20px;
       overflow-x: hidden;
       position: relative;
     }
@@ -95,7 +96,7 @@
     }
 
     /* =========================
-       PROFILE
+        PROFILE
     ========================= */
 
     .profile {
@@ -212,7 +213,7 @@
     }
 
     /* =========================
-       LINKS
+        LINKS
     ========================= */
 
     .links {
@@ -264,33 +265,19 @@
         box-shadow 0.25s ease;
     }
 
-    .link-card:nth-child(1) {
-      animation-delay: 0.15s;
-    }
-
-    .link-card:nth-child(2) {
-      animation-delay: 0.23s;
-    }
-
-    .link-card:nth-child(3) {
-      animation-delay: 0.31s;
-    }
-
-    .link-card:nth-child(4) {
-      animation-delay: 0.39s;
-    }
+    .link-card:nth-child(1) { animation-delay: 0.15s; }
+    .link-card:nth-child(2) { animation-delay: 0.23s; }
+    .link-card:nth-child(3) { animation-delay: 0.31s; }
+    .link-card:nth-child(4) { animation-delay: 0.39s; }
 
     /* Shine */
     .link-card::before {
       content: "";
-
       position: absolute;
       top: 0;
       left: -120%;
-
       width: 80%;
       height: 100%;
-
       background:
         linear-gradient(
           90deg,
@@ -298,9 +285,7 @@
           rgba(255, 255, 255, 0.07),
           transparent
         );
-
       transform: skewX(-20deg);
-
       transition: left 0.6s ease;
     }
 
@@ -340,29 +325,20 @@
     .icon {
       width: 39px;
       height: 39px;
-
       border-radius: 12px;
-
       display: flex;
       justify-content: center;
       align-items: center;
-
       background: rgba(255, 255, 255, 0.055);
       border: 1px solid rgba(255, 255, 255, 0.07);
-
-      transition:
-        transform 0.25s ease,
-        background 0.25s ease;
+      transition: transform 0.25s ease, background 0.25s ease;
     }
 
     .icon svg {
       width: 20px;
       height: 20px;
-
       fill: currentColor;
-
-      transition:
-        transform 0.25s ease;
+      transition: transform 0.25s ease;
     }
 
     .link-card:hover .icon {
@@ -384,13 +360,9 @@
     .arrow {
       color: #71717a;
       font-size: 1.15rem;
-
       position: relative;
       z-index: 2;
-
-      transition:
-        transform 0.25s ease,
-        color 0.25s ease;
+      transition: transform 0.25s ease, color 0.25s ease;
     }
 
     .link-card:hover .arrow {
@@ -399,7 +371,66 @@
     }
 
     /* =========================
-       ANIMATIONS
+        LATEST YOUTUBE VIDEO
+    ========================= */
+
+    .latest-youtube {
+      margin-top: 120px; /* Hidden below initial view until scrolled */
+      margin-bottom: 60px;
+      text-align: left;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(.2,.8,.2,1), transform 0.8s cubic-bezier(.2,.8,.2,1);
+    }
+
+    /* Fades in on scroll */
+    .latest-youtube.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+      padding-left: 4px;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 17px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.025));
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.16);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .video-container:hover {
+      transform: translateY(-3px) scale(1.012);
+      border-color: rgba(255, 110, 199, 0.35);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 110, 199, 0.08);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* =========================
+        ANIMATIONS
     ========================= */
 
     @keyframes fadeUp {
@@ -407,7 +438,6 @@
         opacity: 0;
         transform: translateY(18px);
       }
-
       to {
         opacity: 1;
         transform: translateY(0);
@@ -419,7 +449,6 @@
         opacity: 0;
         transform: translateY(18px) scale(0.97);
       }
-
       to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -433,12 +462,12 @@
     }
 
     /* =========================
-       MOBILE
+        MOBILE
     ========================= */
 
     @media (max-width: 480px) {
       body {
-        padding: 30px 16px;
+        padding: 40px 16px;
       }
 
       .container {
@@ -452,7 +481,7 @@
     }
 
     /* =========================
-       REDUCED MOTION
+        REDUCED MOTION
     ========================= */
 
     @media (prefers-reduced-motion: reduce) {
@@ -465,7 +494,8 @@
         transition-duration: 0.01ms !important;
       }
 
-      .link-card {
+      .link-card,
+      .latest-youtube {
         opacity: 1;
         transform: none;
       }
@@ -580,7 +610,7 @@
       </a>
 
 
-      <!-- YouTube -->
+      <!-- YouTube Link -->
       <a
         href="https://www.youtube.com/@musaisapaki"
         target="_blank"
@@ -606,7 +636,37 @@
 
     </section>
 
+    <!-- Latest YouTube Video Section -->
+    <section class="latest-youtube" id="yt-section">
+      <h2 class="section-title">Latest Video</h2>
+      <div class="video-container">
+        <iframe 
+          src="https://www.youtube-nocookie.com/embed?listType=playlist&list=UUWQRswUdIkqT48iiJCdT8Ig" 
+          title="Latest YouTube Video"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+
   </main>
+
+  <script>
+    // Reveal YouTube video section only when user scrolls down
+    const section = document.getElementById('yt-section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          section.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    if (section) {
+      observer.observe(section);
+    }
+  </script>
 
 </body>
 </html>
