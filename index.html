@@ -2,135 +2,201 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Musa</title>
-  <meta name="theme-color" content="#07070a">
-  <meta name="description" content="Musa's social links and latest content">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Musa — @musaisapaki</title>
+  <meta name="theme-color" content="#1c0a0e">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Musa's social links and latest content: Instagram, TikTok, Snapchat and YouTube.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Musa — @musaisapaki">
+  <meta property="og:description" content="Find me on Instagram, TikTok, Snapchat and YouTube.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Musa — @musaisapaki">
+  <meta name="twitter:description" content="Find me on Instagram, TikTok, Snapchat and YouTube.">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23c1272d'/%3E%3Cstop offset='1' stop-color='%238f1522'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='url(%23g)'/%3E%3Ctext x='32' y='45' font-size='36' font-weight='800' text-anchor='middle' fill='white' font-family='sans-serif'%3EM%3C/text%3E%3C/svg%3E">
 
   <style>
     :root {
-      --bg: #07070a;
-      --card-bg: rgba(255, 255, 255, 0.035);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --text: #ffffff;
-      --muted: #94a3b8;
-      --accent-1: #4f46e5;
-      --accent-2: #312e81;
+      --bg: #1c0a0e;
+      --card-bg: rgba(255, 255, 255, 0.07);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text: #fff5f5;
+      --muted: #d4b3b6;
+      --c1: #c1272d;   /* crimson */
+      --c2: #8f1522;   /* deep red */
+      --c3: #ff6b5e;   /* light coral red */
+      --brand: #8f1522;
+      --mx: 50%;
+      --my: 50%;
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
       -webkit-tap-highlight-color: transparent;
     }
 
     body {
       min-height: 100vh;
+      min-height: 100dvh;
       color: var(--text);
       background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Inter, Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 40px 18px;
+      padding: max(44px, env(safe-area-inset-top)) 18px max(44px, env(safe-area-inset-bottom));
       overflow-x: hidden;
       position: relative;
     }
 
-    /* Ambient background glows */
-    body::before {
-      content: "";
-      position: fixed;
-      width: 380px;
-      height: 380px;
+    /* ---------- Background ---------- */
+    .bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+
+    .orb {
+      position: absolute;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(79, 70, 229, 0.15) 0%, transparent 70%);
-      top: -100px;
-      left: 50%;
-      transform: translateX(-50%);
-      pointer-events: none;
-      z-index: 0;
+      filter: blur(60px);
+      will-change: transform;
+    }
+    .o1 { width: 460px; height: 460px; background: var(--c1); opacity: .42; top: -180px; left: -120px; animation: f1 20s ease-in-out infinite; }
+    .o2 { width: 420px; height: 420px; background: var(--c2); opacity: .36; bottom: -160px; right: -120px; animation: f2 24s ease-in-out infinite; }
+    .o3 { width: 280px; height: 280px; background: var(--c3); opacity: .16; top: 48%; left: 58%; animation: f3 28s ease-in-out infinite; }
+
+    @keyframes f1 { 50% { transform: translate(70px, 60px) scale(1.12); } }
+    @keyframes f2 { 50% { transform: translate(-80px, -50px) scale(1.15); } }
+    @keyframes f3 { 50% { transform: translate(-60px, 70px) scale(.9); } }
+
+    /* Film grain */
+    .grain {
+      position: absolute; inset: 0;
+      opacity: .05;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
+    /* Vignette */
+    .vignette {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 40%, transparent 40%, rgba(0,0,0,.35) 100%);
+    }
+
+    /* ---------- Layout ---------- */
     .container {
       width: 100%;
-      max-width: 420px;
+      max-width: 440px;
       text-align: center;
       position: relative;
       z-index: 2;
     }
 
-    /* Profile Section */
-    .profile {
-      margin-bottom: 28px;
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px) scale(.98);
+      animation: reveal .8s cubic-bezier(.2,.8,.2,1) forwards;
+      animation-delay: calc(var(--i, 0) * 90ms + 80ms);
     }
+    @keyframes reveal { to { opacity: 1; transform: none; } }
+
+    /* ---------- Profile ---------- */
+    .profile { margin-bottom: 34px; }
 
     .profile-wrapper {
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 16px;
+      width: 116px;
+      height: 116px;
+      margin: 0 auto 20px;
       position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: grid;
+      place-items: center;
+      perspective: 600px;
+    }
+
+    .profile-glow {
+      position: absolute; inset: -16px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--c1), var(--c2), var(--c3), var(--c1));
+      filter: blur(26px);
+      opacity: .5;
+      animation: spin 9s linear infinite;
     }
 
     .profile-ring {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       border-radius: 50%;
-      background: conic-gradient(from 180deg, var(--accent-1), var(--accent-2), var(--accent-1));
-      animation: rotate 10s linear infinite;
+      background: conic-gradient(from 180deg, var(--c1), var(--c2), var(--c3), var(--c1));
+      animation: spin 6s linear infinite;
     }
-
     .profile-ring::after {
       content: "";
-      position: absolute;
-      inset: 2px;
+      position: absolute; inset: 3px;
       border-radius: 50%;
       background: var(--bg);
     }
 
     .profile-img {
-      width: 88px;
-      height: 88px;
+      width: 100px; height: 100px;
       border-radius: 50%;
-      background: linear-gradient(145deg, #18181b, #09090b);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 30px;
-      font-weight: 700;
-      color: #e2e8f0;
-      position: relative;
-      z-index: 2;
+      background: radial-gradient(circle at 30% 22%, #46181f, #220b10 72%);
+      border: 1px solid rgba(255,255,255,.1);
+      display: grid; place-items: center;
+      font-size: 40px;
+      font-weight: 800;
+      position: relative; z-index: 2;
+      transition: transform .15s ease-out;
+      transform-style: preserve-3d;
+    }
+    .profile-img span {
+      background: linear-gradient(135deg, #fff 10%, var(--c3) 50%, var(--c2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     h1 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 4px;
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -.035em;
+      margin-bottom: 10px;
+      background: linear-gradient(180deg, #fff, #ffd6d6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
-    .handle {
+    .handle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       color: var(--muted);
-      font-size: 0.95rem;
-      font-weight: 400;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--card-border);
+      border-radius: 999px;
+      padding: 7px 15px;
+      font-size: .92rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: color .2s, background .2s, border-color .2s, transform .2s;
     }
+    .handle-btn:hover { color: #fff; background: rgba(255,255,255,.09); border-color: rgba(193,39,45,.55); }
+    .handle-btn:active { transform: scale(.96); }
+    .handle-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
-    /* Links Section */
+    /* ---------- Links ---------- */
     .links {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 13px;
       margin-bottom: 30px;
     }
 
     .link-card {
-      min-height: 62px;
+      --brand: #8f1522;
+      position: relative;
+      min-height: 70px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -139,261 +205,383 @@
       text-decoration: none;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 16px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      border-radius: 20px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      overflow: hidden;
+      isolation: isolate;
+      transition: transform .3s cubic-bezier(.2,.8,.2,1), border-color .3s ease, box-shadow .3s ease;
     }
 
-    .link-card:hover {
-      transform: translateY(-2px);
-      background: rgba(255, 255, 255, 0.07);
-      border-color: rgba(79, 70, 229, 0.4);
+    /* Cursor spotlight */
+    .link-card::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: radial-gradient(240px circle at var(--mx) var(--my), color-mix(in srgb, var(--brand) 30%, transparent), transparent 70%);
+      opacity: 0;
+      transition: opacity .3s ease;
+      z-index: -1;
     }
 
-    .link-card:active {
-      transform: scale(0.98);
+    /* Shine sweep */
+    .link-card::after {
+      content: "";
+      position: absolute;
+      top: 0; bottom: 0; left: -60%;
+      width: 40%;
+      background: linear-gradient(100deg, transparent, rgba(255,255,255,.12), transparent);
+      transform: skewX(-20deg);
+      transition: left .7s ease;
+      z-index: -1;
+    }
+    .link-card:hover::after, .link-card:focus-visible::after { left: 130%; }
+
+    .link-card:hover, .link-card:focus-visible {
+      transform: translateY(-4px);
+      border-color: color-mix(in srgb, var(--brand) 60%, transparent);
+      box-shadow: 0 14px 34px -12px color-mix(in srgb, var(--brand) 65%, transparent);
+    }
+    .link-card:hover::before, .link-card:focus-visible::before { opacity: 1; }
+    .link-card:active { transform: scale(.98); }
+
+    .link-card:focus-visible, .handle-btn:focus-visible, .video-facade:focus-visible, .video-yt-link:focus-visible {
+      outline: 2px solid var(--c3);
+      outline-offset: 3px;
     }
 
-    .link-info {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
+    .link-info { display: flex; align-items: center; gap: 15px; text-align: left; }
 
     .icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.05);
+      width: 44px; height: 44px;
+      border-radius: 13px;
+      display: grid; place-items: center;
+      background: rgba(255,255,255,.07);
+      color: #ffe3e3;
+      transition: background .3s ease, color .3s ease, transform .3s ease;
     }
+    .icon svg { width: 22px; height: 22px; fill: currentColor; }
+    .link-card:hover .icon, .link-card:focus-visible .icon {
+      background: var(--brand);
+      color: #fff;
+      transform: rotate(-8deg) scale(1.08);
+    }
+    .link-card.snap:hover .icon, .link-card.snap:focus-visible .icon,
+    .link-card.tiktok:hover .icon, .link-card.tiktok:focus-visible .icon { color: #1c0a0e; }
 
-    .icon svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-    }
-
-    .link-name {
-      font-size: 0.96rem;
-      font-weight: 600;
-    }
+    .link-text { display: flex; flex-direction: column; line-height: 1.25; }
+    .link-name { font-size: 1.02rem; font-weight: 700; }
+    .link-sub { font-size: .78rem; color: var(--muted); }
 
     .arrow {
-      color: #64748b;
-      font-size: 1.1rem;
-      transition: transform 0.2s ease, color 0.2s ease;
+      color: #b08f93;
+      font-size: 1.2rem;
+      transition: transform .3s ease, color .3s ease;
     }
+    .link-card:hover .arrow, .link-card:focus-visible .arrow { color: #fff; transform: translate(3px, -3px); }
 
-    .link-card:hover .arrow {
-      color: #a5b4fc;
-      transform: translate(2px, -2px);
-    }
+    .insta { --brand: #e1306c; }
+    .tiktok { --brand: #25f4ee; }
+    .snap { --brand: #fffc00; }
+    .yt { --brand: #ff0033; }
 
-    /* Video Section */
+    /* ---------- Video ---------- */
     .video-section {
+      position: relative;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 20px;
+      border-radius: 24px;
       padding: 16px;
       text-align: left;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
 
     .video-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 12px;
+      margin-bottom: 13px;
+      gap: 10px;
     }
 
     .video-title {
-      font-size: 0.8rem;
+      font-size: .78rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
+      letter-spacing: .1em;
       text-transform: uppercase;
       color: var(--muted);
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 9px;
     }
 
     .pulse-dot {
-      width: 8px;
-      height: 8px;
-      background: #ef4444;
+      width: 8px; height: 8px;
+      background: #ff3b4e;
       border-radius: 50%;
-      box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
+      position: relative;
     }
+    .pulse-dot::after {
+      content: "";
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      background: #ff3b4e;
+      animation: pulse 1.8s ease-out infinite;
+    }
+    @keyframes pulse { to { transform: scale(3.4); opacity: 0; } }
 
     .video-yt-link {
       color: var(--muted);
-      font-size: 0.82rem;
+      font-size: .82rem;
       text-decoration: none;
       font-weight: 500;
-      transition: color 0.2s ease;
+      transition: color .2s ease;
+      white-space: nowrap;
     }
-
-    .video-yt-link:hover {
-      color: #fff;
-    }
+    .video-yt-link:hover { color: #fff; }
 
     .video-container {
       width: 100%;
       aspect-ratio: 16 / 9;
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
       background: #000;
       position: relative;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 14px 36px rgba(0,0,0,.6);
     }
 
     .video-container iframe,
     .video-container .video-facade {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       border: 0;
-      position: absolute;
-      top: 0;
-      left: 0;
+      position: absolute; top: 0; left: 0;
     }
 
-    /* Lazy Play Button Facade */
     .video-facade {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #18181b, #09090b);
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(193,39,45,.4), transparent 55%),
+        radial-gradient(circle at 85% 90%, rgba(225,40,55,.35), transparent 55%),
+        linear-gradient(135deg, #2f1218, #160709);
       cursor: pointer;
-      z-index: 2;
+      border: 0;
+      color: #fff;
+      font-family: inherit;
     }
 
     .play-btn {
-      width: 54px;
-      height: 54px;
-      background: rgba(239, 68, 68, 0.9);
+      width: 68px; height: 68px;
+      background: linear-gradient(135deg, var(--c1), var(--c2));
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
-      transition: transform 0.2s ease, background 0.2s ease;
+      display: grid; place-items: center;
+      box-shadow: 0 10px 28px rgba(225,40,55,.45);
+      transition: transform .3s ease;
+      animation: ring 2.4s ease-out infinite;
+    }
+    .play-btn svg { width: 26px; height: 26px; fill: #fff; margin-left: 3px; }
+    .video-facade:hover .play-btn { transform: scale(1.1); }
+    @keyframes ring {
+      0%   { box-shadow: 0 0 0 0 rgba(225,40,55,.5), 0 10px 28px rgba(225,40,55,.45); }
+      70%  { box-shadow: 0 0 0 20px rgba(225,40,55,0), 0 10px 28px rgba(225,40,55,.45); }
+      100% { box-shadow: 0 0 0 0 rgba(225,40,55,0), 0 10px 28px rgba(225,40,55,.45); }
     }
 
-    .play-btn svg {
-      width: 20px;
-      height: 20px;
-      fill: #ffffff;
-      margin-left: 3px;
+    .facade-label {
+      position: absolute;
+      bottom: 12px; left: 15px;
+      font-size: .78rem;
+      color: rgba(255,255,255,.7);
+      font-weight: 500;
     }
 
-    .video-facade:hover .play-btn {
-      transform: scale(1.1);
-      background: #ef4444;
-    }
+    .copyright { margin-top: 28px; color: #a4858a; font-size: .75rem; }
 
-    @keyframes rotate {
-      to { transform: rotate(360deg); }
+    /* ---------- Toast ---------- */
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: max(26px, env(safe-area-inset-bottom));
+      transform: translate(-50%, 30px);
+      background: rgba(44,17,22,.92);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      font-size: .88rem;
+      padding: 10px 18px;
+      border-radius: 999px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s ease, transform .25s ease;
+      z-index: 10;
     }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     @media (max-width: 480px) {
-      body { padding: 30px 14px; }
+      body { padding-left: 14px; padding-right: 14px; }
       .container { max-width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
     }
   </style>
 </head>
 <body>
 
+  <div class="bg" aria-hidden="true">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+    <div class="grain"></div>
+    <div class="vignette"></div>
+  </div>
+
   <main class="container">
 
     <!-- Profile -->
     <section class="profile">
-      <div class="profile-wrapper">
-        <div class="profile-ring"></div>
-        <div class="profile-img">M</div>
+      <div class="profile-wrapper reveal" style="--i:0" id="avatar">
+        <div class="profile-glow" aria-hidden="true"></div>
+        <div class="profile-ring" aria-hidden="true"></div>
+        <div class="profile-img" role="img" aria-label="Musa"><span>M</span></div>
       </div>
-      <h1>Musa</h1>
-      <p class="handle">@musaisapaki</p>
+      <h1 class="reveal" style="--i:1">Musa</h1>
+      <button class="handle-btn reveal" style="--i:2" id="copyHandle" type="button" aria-label="Copy handle @musaisapaki">
+        <span>@musaisapaki</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
     </section>
 
     <!-- Social Links -->
-    <section class="links">
+    <nav class="links" aria-label="Social links">
 
-      <!-- Instagram -->
-      <a href="https://www.instagram.com/musaisapaki/" target="_blank" rel="noopener noreferrer" class="link-card">
+      <a href="https://www.instagram.com/musaisapaki/" target="_blank" rel="noopener noreferrer" class="link-card insta reveal" style="--i:3">
         <div class="link-info">
           <div class="icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.204-.012-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.204-.012-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </div>
-          <span class="link-name">Instagram</span>
+          <div class="link-text"><span class="link-name">Instagram</span><span class="link-sub">Photos &amp; stories</span></div>
         </div>
-        <span class="arrow">↗</span>
+        <span class="arrow" aria-hidden="true">↗</span>
       </a>
 
-      <!-- TikTok -->
-      <a href="https://www.tiktok.com/@musaisapaki" target="_blank" rel="noopener noreferrer" class="link-card">
+      <a href="https://www.tiktok.com/@musaisapaki" target="_blank" rel="noopener noreferrer" class="link-card tiktok reveal" style="--i:4">
         <div class="link-info">
           <div class="icon">
-            <svg viewBox="0 0 24 24"><path d="M12.525 0h3.08c.012 1.08.36 2.067 1.048 2.872.684.805 1.58 1.282 2.656 1.391v3.2a6.386 6.386 0 0 1-3.704-1.18v8.666c0 1.708-.43 3.23-1.288 4.567-.859 1.336-2.023 2.34-3.49 3.01-1.468.67-3.033.882-4.697.636-1.664-.246-3.136-.97-4.417-2.172C.432 19.82-.143 18.28.016 16.58c.16-1.7.838-3.178 2.035-4.433 1.198-1.255 2.67-2.003 4.417-2.246 1.747-.243 3.398.05 4.954.88v3.31a3.528 3.528 0 0 0-2.316-.54c-.89.08-1.65.44-2.28 1.08-.63.64-.98 1.42-1.05 2.34-.07.92.17 1.76.72 2.52.55.76 1.28 1.22 2.19 1.38.91.16 1.78.02 2.61-.42.83-.44 1.42-1.08 1.77-1.92.12-.28.18-.58.18-.9V0z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525 0h3.08c.012 1.08.36 2.067 1.048 2.872.684.805 1.58 1.282 2.656 1.391v3.2a6.386 6.386 0 0 1-3.704-1.18v8.666c0 1.708-.43 3.23-1.288 4.567-.859 1.336-2.023 2.34-3.49 3.01-1.468.67-3.033.882-4.697.636-1.664-.246-3.136-.97-4.417-2.172C.432 19.82-.143 18.28.016 16.58c.16-1.7.838-3.178 2.035-4.433 1.198-1.255 2.67-2.003 4.417-2.246 1.747-.243 3.398.05 4.954.88v3.31a3.528 3.528 0 0 0-2.316-.54c-.89.08-1.65.44-2.28 1.08-.63.64-.98 1.42-1.05 2.34-.07.92.17 1.76.72 2.52.55.76 1.28 1.22 2.19 1.38.91.16 1.78.02 2.61-.42.83-.44 1.42-1.08 1.77-1.92.12-.28.18-.58.18-.9V0z"/></svg>
           </div>
-          <span class="link-name">TikTok</span>
+          <div class="link-text"><span class="link-name">TikTok</span><span class="link-sub">Short videos</span></div>
         </div>
-        <span class="arrow">↗</span>
+        <span class="arrow" aria-hidden="true">↗</span>
       </a>
 
-      <!-- Snapchat -->
-      <a href="https://www.snapchat.com/add/musaisapaki" target="_blank" rel="noopener noreferrer" class="link-card">
+      <a href="https://www.snapchat.com/add/musaisapaki" target="_blank" rel="noopener noreferrer" class="link-card snap reveal" style="--i:5">
         <div class="link-info">
           <div class="icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c-3.08 0-5.58 2.5-5.58 5.58v3.04c0 .39-.18.75-.49.98l-1.31.96c-.31.23-.2.72.17.8l1.76.4c.19.04.34.19.39.38.17.65.55 1.2 1.1 1.57.42.28.9.46 1.4.54.32.66.94 1.12 1.66 1.12.72 0 1.34-.46 1.66-1.12.5-.08.98-.26 1.4-.54.55-.37.93-.92 1.1-1.57.05-.19.2-.34.39-.38l1.76-.4c.37-.08.48-.57.17-.8l-1.31-.96a1.22 1.22 0 0 1-.49-.98v-3.04c0-3.08-2.5-5.58-5.58-5.58z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12 1.033-.301.165-.088.344-.104.464-.104.182 0 .359.029.509.09.45.149.734.479.734.838.015.449-.39.839-1.213 1.168-.089.029-.209.075-.344.119-.45.135-1.139.36-1.333.81-.09.224-.061.524.12.868l.015.015c.06.136 1.526 3.475 4.791 4.014.255.044.435.27.42.509 0 .075-.015.149-.045.225-.24.569-1.273.988-3.146 1.271-.059.091-.12.375-.164.57-.029.179-.074.36-.134.553-.076.271-.27.405-.555.405h-.03c-.135 0-.313-.031-.538-.074-.36-.075-.765-.135-1.273-.135-.3 0-.599.015-.913.074-.6.104-1.123.464-1.723.884-.853.599-1.826 1.288-3.294 1.288-.06 0-.119-.015-.18-.015h-.149c-1.468 0-2.427-.675-3.279-1.288-.599-.42-1.107-.779-1.707-.884-.314-.045-.629-.074-.928-.074-.54 0-.958.089-1.272.149-.211.043-.391.074-.54.074-.374 0-.523-.224-.583-.42-.061-.192-.09-.389-.135-.567-.046-.181-.105-.494-.166-.57-1.918-.222-2.95-.642-3.189-1.226-.031-.063-.052-.15-.055-.225-.015-.243.165-.465.42-.509 3.264-.54 4.73-3.879 4.791-4.02l.016-.029c.18-.345.224-.645.119-.869-.195-.434-.884-.658-1.332-.809-.121-.029-.24-.075-.346-.12-1.107-.435-1.257-.93-1.197-1.273.09-.479.674-.793 1.168-.793.146 0 .27.029.383.074.42.194.789.3 1.104.3.234 0 .384-.06.465-.105l-.046-.569c-.098-1.626-.225-3.651.307-4.837C7.392 1.077 10.739.807 11.727.807l.419-.015h.06z"/></svg>
           </div>
-          <span class="link-name">Snapchat</span>
+          <div class="link-text"><span class="link-name">Snapchat</span><span class="link-sub">Add me</span></div>
         </div>
-        <span class="arrow">↗</span>
+        <span class="arrow" aria-hidden="true">↗</span>
       </a>
 
-      <!-- YouTube -->
-      <a href="https://www.youtube.com/@musaisapaki" target="_blank" rel="noopener noreferrer" class="link-card">
+      <a href="https://www.youtube.com/@musaisapaki" target="_blank" rel="noopener noreferrer" class="link-card yt reveal" style="--i:6">
         <div class="link-info">
           <div class="icon">
-            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
           </div>
-          <span class="link-name">YouTube</span>
+          <div class="link-text"><span class="link-name">YouTube</span><span class="link-sub">Subscribe for new videos</span></div>
         </div>
-        <span class="arrow">↗</span>
+        <span class="arrow" aria-hidden="true">↗</span>
       </a>
 
-    </section>
+    </nav>
 
-    <!-- Latest Video Embed -->
-    <section class="video-section">
+    <!-- Latest Video -->
+    <section class="video-section reveal" style="--i:7" aria-label="Latest video">
       <div class="video-header">
-        <span class="video-title"><span class="pulse-dot"></span> Latest Video</span>
-        <a href="https://www.youtube.com/@musaisapaki" target="_blank" class="video-yt-link">Watch on YouTube &rsaquo;</a>
+        <span class="video-title"><span class="pulse-dot" aria-hidden="true"></span> Latest Video</span>
+        <a href="https://www.youtube.com/@musaisapaki" target="_blank" rel="noopener noreferrer" class="video-yt-link">Watch on YouTube &rsaquo;</a>
       </div>
       <div class="video-container" id="videoContainer">
-        <div class="video-facade" onclick="loadVideo()">
-          <div class="play-btn">
-            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-        </div>
+        <button class="video-facade" id="videoFacade" type="button" aria-label="Play latest video">
+          <span class="play-btn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+          <span class="facade-label">Tap to play</span>
+        </button>
       </div>
     </section>
+
+    <p class="copyright reveal" style="--i:8">© <span id="year"></span> Musa</p>
 
   </main>
 
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
   <script>
-    function loadVideo() {
-      const container = document.getElementById('videoContainer');
-      container.innerHTML = `<iframe 
-        src="https://www.youtube-nocookie.com/embed/videoseries?list=UUWQRswUdIkqT48iiJCdT8Ig&autoplay=1" 
-        title="Latest YouTube Video" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-      </iframe>`;
-    }
+    (function () {
+      /* Lazy video: loads on click. Uploads playlist always shows the newest video. */
+      document.getElementById('videoFacade').addEventListener('click', function () {
+        document.getElementById('videoContainer').innerHTML =
+          '<iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=UUWQRswUdIkqT48iiJCdT8Ig&autoplay=1" ' +
+          'title="Latest YouTube video" ' +
+          'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ' +
+          'referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+      });
+
+      /* Toast */
+      var toast = document.getElementById('toast'), toastTimer;
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 2000);
+      }
+
+      /* Clipboard with fallback */
+      function copy(text) {
+        if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+        return new Promise(function (resolve, reject) {
+          var t = document.createElement('textarea');
+          t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+          document.body.appendChild(t); t.select();
+          try { document.execCommand('copy') ? resolve() : reject(); } catch (e) { reject(e); }
+          document.body.removeChild(t);
+        });
+      }
+      document.getElementById('copyHandle').addEventListener('click', function () {
+        copy('@musaisapaki').then(function () { showToast('Handle copied ✓'); }, function () { showToast('Couldn\u2019t copy'); });
+      });
+
+      /* Cursor spotlight on cards */
+      document.querySelectorAll('.link-card').forEach(function (card) {
+        card.addEventListener('pointermove', function (e) {
+          var r = card.getBoundingClientRect();
+          card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+          card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        });
+      });
+
+      /* Avatar 3D tilt (mouse only, skipped for reduced motion) */
+      var avatar = document.querySelector('.profile-img');
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduce && window.matchMedia('(hover: hover)').matches) {
+        window.addEventListener('pointermove', function (e) {
+          var x = (e.clientX / window.innerWidth - 0.5) * 2;
+          var y = (e.clientY / window.innerHeight - 0.5) * 2;
+          avatar.style.transform = 'rotateY(' + (x * 14) + 'deg) rotateX(' + (-y * 14) + 'deg)';
+        });
+        document.addEventListener('pointerleave', function () { avatar.style.transform = ''; });
+      }
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
   </script>
 </body>
 </html>
