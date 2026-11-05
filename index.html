@@ -1,390 +1,587 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>musaisapaki | Official Links</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,800;1,800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        syne: ['Syne', 'sans-serif'],
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                    },
-                    colors: {
-                        obsidian: '#070709',
-                        darkCard: '#0f0f15',
-                        instaGradient: 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)',
-                    }
-                }
-            }
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Musa — @musaisapaki</title>
+  <meta name="theme-color" content="#0f0b1f">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Musa's social links and latest content: Instagram, TikTok, Snapchat and YouTube.">
 
-    <style>
-        body {
-            background-color: #070709;
-            color: #f3f4f6;
-            overflow-x: hidden;
-        }
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Musa — @musaisapaki">
+  <meta property="og:description" content="Find me on Instagram, TikTok, Snapchat and YouTube.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Musa — @musaisapaki">
+  <meta name="twitter:description" content="Find me on Instagram, TikTok, Snapchat and YouTube.">
 
-        /* Glassmorphism Styles */
-        .glass-card {
-            background: rgba(18, 18, 26, 0.65);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-        }
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234f46e5'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='url(%23g)'/%3E%3Ctext x='32' y='45' font-size='36' font-weight='800' text-anchor='middle' fill='white' font-family='sans-serif'%3EM%3C/text%3E%3C/svg%3E">
 
-        .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.18);
-        }
+  <style>
+    :root {
+      --bg: #0f0b1f;
+      --card-bg: rgba(255, 255, 255, 0.07);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text: #f5f5ff;
+      --muted: #a9a8cc;
+      --c1: #4f46e5;   /* indigo */
+      --c2: #7c3aed;   /* purple */
+      --c3: #818cf8;   /* periwinkle */
+      --brand: #7c3aed;
+      --mx: 50%;
+      --my: 50%;
+    }
 
-        /* Instagram Glow & Button */
-        .insta-btn {
-            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-            box-shadow: 0 4px 25px rgba(220, 39, 67, 0.4);
-        }
-        .insta-btn:hover {
-            box-shadow: 0 6px 35px rgba(220, 39, 67, 0.7);
-            transform: translateY(-2px);
-        }
-        .insta-glow {
-            box-shadow: 0 0 80px rgba(220, 39, 67, 0.25);
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-        /* TikTok Neon Effect */
-        .tiktok-btn {
-            background: #000000;
-            border: 1px solid rgba(0, 242, 254, 0.4);
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.2), inset 0 0 10px rgba(255, 0, 80, 0.2);
-        }
-        .tiktok-btn:hover {
-            box-shadow: -3px 3px 25px rgba(255, 0, 80, 0.6), 3px -3px 25px rgba(0, 242, 254, 0.6);
-            transform: translateY(-2px);
-        }
-        .tiktok-glow {
-            box-shadow: 0 0 80px rgba(0, 242, 254, 0.2);
-        }
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      color: var(--text);
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Inter, Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: max(44px, env(safe-area-inset-top)) 18px max(44px, env(safe-area-inset-bottom));
+      overflow-x: hidden;
+      position: relative;
+    }
 
-        /* Snapchat Glow */
-        .snap-btn {
-            background: #FFFC00;
-            color: #000;
-            font-weight: 700;
-            box-shadow: 0 4px 25px rgba(255, 252, 0, 0.35);
-        }
-        .snap-btn:hover {
-            box-shadow: 0 6px 35px rgba(255, 252, 0, 0.6);
-            transform: translateY(-2px);
-        }
-        .snap-glow {
-            box-shadow: 0 0 80px rgba(255, 252, 0, 0.15);
-        }
+    /* ---------- Background ---------- */
+    .bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
 
-        /* YouTube Glow */
-        .yt-btn {
-            background: #FF0000;
-            box-shadow: 0 4px 25px rgba(255, 0, 0, 0.4);
-        }
-        .yt-btn:hover {
-            box-shadow: 0 6px 35px rgba(255, 0, 0, 0.7);
-            transform: translateY(-2px);
-        }
-        .yt-glow {
-            box-shadow: 0 0 90px rgba(255, 0, 0, 0.25);
-        }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      will-change: transform;
+    }
+    .o1 { width: 460px; height: 460px; background: var(--c1); opacity: .42; top: -180px; left: -120px; animation: f1 20s ease-in-out infinite; }
+    .o2 { width: 420px; height: 420px; background: var(--c2); opacity: .36; bottom: -160px; right: -120px; animation: f2 24s ease-in-out infinite; }
+    .o3 { width: 280px; height: 280px; background: var(--c3); opacity: .16; top: 48%; left: 58%; animation: f3 28s ease-in-out infinite; }
 
-        /* Custom Curved Text Styles */
-        .curved-text-path {
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            fill: url(#text-gradient);
-            letter-spacing: 4px;
-            text-transform: lowercase;
-        }
+    @keyframes f1 { 50% { transform: translate(70px, 60px) scale(1.12); } }
+    @keyframes f2 { 50% { transform: translate(-80px, -50px) scale(1.15); } }
+    @keyframes f3 { 50% { transform: translate(-60px, 70px) scale(.9); } }
 
-        /* Animations */
-        .reveal-element {
-            opacity: 0;
-            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform, opacity;
-        }
+    /* Film grain */
+    .grain {
+      position: absolute; inset: 0;
+      opacity: .05;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
 
-        .reveal-left {
-            transform: translateX(-70px);
-        }
+    /* Vignette */
+    .vignette {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 40%, transparent 40%, rgba(0,0,0,.4) 100%);
+    }
 
-        .reveal-right {
-            transform: translateX(70px);
-        }
+    /* ---------- Layout ---------- */
+    .container {
+      width: 100%;
+      max-width: 440px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
 
-        .reveal-up {
-            transform: translateY(60px);
-        }
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px) scale(.98);
+      animation: reveal .8s cubic-bezier(.2,.8,.2,1) forwards;
+      animation-delay: calc(var(--i, 0) * 90ms + 80ms);
+    }
+    @keyframes reveal { to { opacity: 1; transform: none; } }
 
-        .reveal-element.active {
-            opacity: 1;
-            transform: translate(0, 0);
-        }
+    /* ---------- Profile ---------- */
+    .profile { margin-bottom: 34px; }
 
-        /* Snap Scroll Container setup */
-        .scroll-container {
-            scroll-snap-type: y mandatory;
-        }
-        
-        .section-snap {
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
-        }
+    .profile-wrapper {
+      width: 116px;
+      height: 116px;
+      margin: 0 auto 20px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      perspective: 600px;
+    }
 
-        /* Floating background lights */
-        .ambient-light {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(120px);
-            pointer-events: none;
-            z-index: 0;
-        }
-    </style>
+    .profile-glow {
+      position: absolute; inset: -16px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--c1), var(--c2), var(--c3), var(--c1));
+      filter: blur(26px);
+      opacity: .5;
+      animation: spin 9s linear infinite;
+    }
+
+    .profile-ring {
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      background: conic-gradient(from 180deg, var(--c1), var(--c2), var(--c3), var(--c1));
+      animation: spin 6s linear infinite;
+    }
+    .profile-ring::after {
+      content: "";
+      position: absolute; inset: 3px;
+      border-radius: 50%;
+      background: var(--bg);
+    }
+
+    .profile-img {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 22%, #26225a, #120e2b 72%);
+      border: 1px solid rgba(255,255,255,.1);
+      display: grid; place-items: center;
+      font-size: 40px;
+      font-weight: 800;
+      position: relative; z-index: 2;
+      transition: transform .15s ease-out;
+      transform-style: preserve-3d;
+    }
+    .profile-img span {
+      background: linear-gradient(135deg, #fff 10%, var(--c3) 50%, var(--c2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -.035em;
+      margin-bottom: 10px;
+      background: linear-gradient(180deg, #fff, #dcdcff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .handle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--card-border);
+      border-radius: 999px;
+      padding: 7px 15px;
+      font-size: .92rem;
+      font-family: inherit;
+      cursor: pointer;
+      transition: color .2s, background .2s, border-color .2s, transform .2s;
+    }
+    .handle-btn:hover { color: #fff; background: rgba(255,255,255,.09); border-color: rgba(79,70,229,.55); }
+    .handle-btn:active { transform: scale(.96); }
+    .handle-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ---------- Links ---------- */
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      margin-bottom: 30px;
+    }
+
+    .link-card {
+      --brand: #7c3aed;
+      position: relative;
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      color: var(--text);
+      text-decoration: none;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      overflow: hidden;
+      isolation: isolate;
+      transition: transform .3s cubic-bezier(.2,.8,.2,1), border-color .3s ease, box-shadow .3s ease;
+    }
+
+    /* Cursor spotlight */
+    .link-card::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: radial-gradient(240px circle at var(--mx) var(--my), color-mix(in srgb, var(--brand) 30%, transparent), transparent 70%);
+      opacity: 0;
+      transition: opacity .3s ease;
+      z-index: -1;
+    }
+
+    /* Shine sweep */
+    .link-card::after {
+      content: "";
+      position: absolute;
+      top: 0; bottom: 0; left: -60%;
+      width: 40%;
+      background: linear-gradient(100deg, transparent, rgba(255,255,255,.12), transparent);
+      transform: skewX(-20deg);
+      transition: left .7s ease;
+      z-index: -1;
+    }
+    .link-card:hover::after, .link-card:focus-visible::after { left: 130%; }
+
+    .link-card:hover, .link-card:focus-visible {
+      transform: translateY(-4px);
+      border-color: color-mix(in srgb, var(--brand) 60%, transparent);
+      box-shadow: 0 14px 34px -12px color-mix(in srgb, var(--brand) 65%, transparent);
+    }
+    .link-card:hover::before, .link-card:focus-visible::before { opacity: 1; }
+    .link-card:active { transform: scale(.98); }
+
+    .link-card:focus-visible, .handle-btn:focus-visible, .video-facade:focus-visible, .video-yt-link:focus-visible {
+      outline: 2px solid var(--c3);
+      outline-offset: 3px;
+    }
+
+    .link-info { display: flex; align-items: center; gap: 15px; text-align: left; }
+
+    .icon {
+      width: 44px; height: 44px;
+      border-radius: 13px;
+      display: grid; place-items: center;
+      background: rgba(255,255,255,.07);
+      color: #e6e6ff;
+      transition: background .3s ease, color .3s ease, transform .3s ease;
+    }
+    .icon svg { width: 22px; height: 22px; fill: currentColor; }
+    .link-card:hover .icon, .link-card:focus-visible .icon {
+      background: var(--brand);
+      color: #fff;
+      transform: rotate(-8deg) scale(1.08);
+    }
+    .link-card.snap:hover .icon, .link-card.snap:focus-visible .icon,
+    .link-card.tiktok:hover .icon, .link-card.tiktok:focus-visible .icon { color: #0f0b1f; }
+
+    .link-text { display: flex; flex-direction: column; line-height: 1.25; }
+    .link-name { font-size: 1.02rem; font-weight: 700; }
+    .link-sub { font-size: .78rem; color: var(--muted); }
+
+    .arrow {
+      color: #7f7dab;
+      font-size: 1.2rem;
+      transition: transform .3s ease, color .3s ease;
+    }
+    .link-card:hover .arrow, .link-card:focus-visible .arrow { color: #fff; transform: translate(3px, -3px); }
+
+    .insta { --brand: #e1306c; }
+    .tiktok { --brand: #25f4ee; }
+    .snap { --brand: #fffc00; }
+    .yt { --brand: #ff0033; }
+
+    /* ---------- Video ---------- */
+    .video-section {
+      position: relative;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 16px;
+      text-align: left;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .video-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 13px;
+      gap: 10px;
+    }
+
+    .video-title {
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .pulse-dot {
+      width: 8px; height: 8px;
+      background: #ff3b4e;
+      border-radius: 50%;
+      position: relative;
+    }
+    .pulse-dot::after {
+      content: "";
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      background: #ff3b4e;
+      animation: pulse 1.8s ease-out infinite;
+    }
+    @keyframes pulse { to { transform: scale(3.4); opacity: 0; } }
+
+    .video-yt-link {
+      color: var(--muted);
+      font-size: .82rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color .2s ease;
+      white-space: nowrap;
+    }
+    .video-yt-link:hover { color: #fff; }
+
+    .video-container {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #000;
+      position: relative;
+      box-shadow: 0 14px 36px rgba(0,0,0,.6);
+    }
+
+    .video-container iframe,
+    .video-container .video-facade {
+      width: 100%; height: 100%;
+      border: 0;
+      position: absolute; top: 0; left: 0;
+    }
+
+    .video-facade {
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(79,70,229,.4), transparent 55%),
+        radial-gradient(circle at 85% 90%, rgba(124,58,237,.35), transparent 55%),
+        linear-gradient(135deg, #1f1a45, #0a0818);
+      cursor: pointer;
+      border: 0;
+      color: #fff;
+      font-family: inherit;
+    }
+
+    .play-btn {
+      width: 68px; height: 68px;
+      background: linear-gradient(135deg, var(--c1), var(--c2));
+      border-radius: 50%;
+      display: grid; place-items: center;
+      box-shadow: 0 10px 28px rgba(124,58,237,.45);
+      transition: transform .3s ease;
+      animation: ring 2.4s ease-out infinite;
+    }
+    .play-btn svg { width: 26px; height: 26px; fill: #fff; margin-left: 3px; }
+    .video-facade:hover .play-btn { transform: scale(1.1); }
+    @keyframes ring {
+      0%   { box-shadow: 0 0 0 0 rgba(124,58,237,.5), 0 10px 28px rgba(124,58,237,.45); }
+      70%  { box-shadow: 0 0 0 20px rgba(124,58,237,0), 0 10px 28px rgba(124,58,237,.45); }
+      100% { box-shadow: 0 0 0 0 rgba(124,58,237,0), 0 10px 28px rgba(124,58,237,.45); }
+    }
+
+    .facade-label {
+      position: absolute;
+      bottom: 12px; left: 15px;
+      font-size: .78rem;
+      color: rgba(255,255,255,.7);
+      font-weight: 500;
+    }
+
+    .copyright { margin-top: 28px; color: #7a78a0; font-size: .75rem; }
+
+    /* ---------- Toast ---------- */
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: max(26px, env(safe-area-inset-bottom));
+      transform: translate(-50%, 30px);
+      background: rgba(22,18,48,.92);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      font-size: .88rem;
+      padding: 10px 18px;
+      border-radius: 999px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s ease, transform .25s ease;
+      z-index: 10;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 480px) {
+      body { padding-left: 14px; padding-right: 14px; }
+      .container { max-width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
-<body class="font-sans antialiased text-gray-100 selection:bg-purple-600 selection:text-white">
+<body>
 
-    <!-- Ambient Background Lighting -->
-    <div class="ambient-light w-[450px] h-[450px] bg-purple-900/30 top-10 left-1/2 -translate-x-1/2"></div>
-    <div class="ambient-light w-[350px] h-[350px] bg-pink-900/20 top-[120vh] right-10"></div>
-    <div class="ambient-light w-[400px] h-[400px] bg-cyan-900/20 top-[220vh] left-10"></div>
+  <div class="bg" aria-hidden="true">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+    <div class="grain"></div>
+    <div class="vignette"></div>
+  </div>
 
-    <main class="w-full">
+  <main class="container">
 
-        <!-- ================= HERO SECTION ================= -->
-        <section class="section-snap min-h-screen w-full flex flex-col justify-center items-center relative py-12 px-4 overflow-hidden">
-            <div class="absolute top-8 left-8 right-8 flex justify-between items-center max-w-6xl mx-auto z-10">
-                <span class="text-xs uppercase tracking-[0.3em] font-semibold text-gray-400">Official Portal</span>
-                <div class="flex space-x-3 items-center">
-                    <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span class="text-xs text-gray-400 font-medium tracking-wider">ONLINE</span>
-                </div>
-            </div>
+    <!-- Profile -->
+    <section class="profile">
+      <div class="profile-wrapper reveal" style="--i:0" id="avatar">
+        <div class="profile-glow" aria-hidden="true"></div>
+        <div class="profile-ring" aria-hidden="true"></div>
+        <div class="profile-img" role="img" aria-label="Musa"><span>M</span></div>
+      </div>
+      <h1 class="reveal" style="--i:1">Musa</h1>
+      <button class="handle-btn reveal" style="--i:2" id="copyHandle" type="button" aria-label="Copy handle @musaisapaki">
+        <span>@musaisapaki</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </section>
 
-            <!-- Curved Header SVG Text -->
-            <div class="w-full max-w-5xl flex flex-col items-center justify-center z-10 relative">
-                <div class="relative w-full max-w-3xl aspect-[2.5/1] flex items-center justify-center px-4">
-                    
-                    <!-- Subtle Glow behind text -->
-                    <div class="absolute inset-0 bg-gradient-to-r from-purple-600/30 via-pink-500/30 to-amber-500/30 blur-3xl rounded-full opacity-60 animate-pulse"></div>
+    <!-- Social Links -->
+    <nav class="links" aria-label="Social links">
 
-                    <!-- SVG Curve Text layout adjusted for full width text visibility -->
-                    <svg viewBox="0 0 650 200" class="w-full h-full overflow-visible drop-shadow-[0_15px_25px_rgba(0,0,0,0.8)]">
-                        <defs>
-                            <linearGradient id="text-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stop-color="#ffffff" />
-                                <stop offset="50%" stop-color="#e2e8f0" />
-                                <stop offset="100%" stop-color="#94a3b8" />
-                            </linearGradient>
-                            <!-- Smoother, wider arc so full text fits seamlessly -->
-                            <path id="curve" d="M 25,145 Q 325,45 625,145" fill="transparent"/>
-                        </defs>
-                        <text class="curved-text-path text-[54px]">
-                            <textPath href="#curve" startOffset="50%" text-anchor="middle">
-                                musaisapaki
-                            </textPath>
-                        </text>
-                    </svg>
-                </div>
-            </div>
-        </section>
+      <a href="https://www.instagram.com/musaisapaki/" target="_blank" rel="noopener noreferrer" class="link-card insta reveal" style="--i:3">
+        <div class="link-info">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.204-.012-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </div>
+          <div class="link-text"><span class="link-name">Instagram</span><span class="link-sub">Photos &amp; stories</span></div>
+        </div>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
 
+      <a href="https://www.tiktok.com/@musaisapaki" target="_blank" rel="noopener noreferrer" class="link-card tiktok reveal" style="--i:4">
+        <div class="link-info">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525 0h3.08c.012 1.08.36 2.067 1.048 2.872.684.805 1.58 1.282 2.656 1.391v3.2a6.386 6.386 0 0 1-3.704-1.18v8.666c0 1.708-.43 3.23-1.288 4.567-.859 1.336-2.023 2.34-3.49 3.01-1.468.67-3.033.882-4.697.636-1.664-.246-3.136-.97-4.417-2.172C.432 19.82-.143 18.28.016 16.58c.16-1.7.838-3.178 2.035-4.433 1.198-1.255 2.67-2.003 4.417-2.246 1.747-.243 3.398.05 4.954.88v3.31a3.528 3.528 0 0 0-2.316-.54c-.89.08-1.65.44-2.28 1.08-.63.64-.98 1.42-1.05 2.34-.07.92.17 1.76.72 2.52.55.76 1.28 1.22 2.19 1.38.91.16 1.78.02 2.61-.42.83-.44 1.42-1.08 1.77-1.92.12-.28.18-.58.18-.9V0z"/></svg>
+          </div>
+          <div class="link-text"><span class="link-name">TikTok</span><span class="link-sub">Short videos</span></div>
+        </div>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
 
-        <!-- ================= INSTAGRAM SECTION ================= -->
-        <!-- Left: Logo | Right: Button -->
-        <section class="section-snap min-h-screen w-full flex items-center justify-center px-6 py-16 relative">
-            <div class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center z-10">
-                
-                <!-- LEFT SIDE: Instagram Logo -->
-                <div class="reveal-element reveal-left flex justify-center items-center">
-                    <div class="relative group">
-                        <!-- Background Glow -->
-                        <div class="absolute -inset-1 bg-gradient-to-r from-yellow-500 via-rose-500 to-purple-600 rounded-3xl blur-2xl opacity-40 group-hover:opacity-75 transition duration-700"></div>
-                        
-                        <!-- Icon Card -->
-                        <div class="relative w-56 h-56 md:w-72 md:h-72 glass-card rounded-3xl flex items-center justify-center insta-glow group-hover:scale-105 transition-transform duration-500">
-                            <i class="fa-brands fa-instagram text-7xl md:text-8xl text-transparent bg-clip-text bg-gradient-to-tr from-amber-400 via-rose-500 to-purple-600"></i>
-                        </div>
-                    </div>
-                </div>
+      <a href="https://www.snapchat.com/add/musaisapaki" target="_blank" rel="noopener noreferrer" class="link-card snap reveal" style="--i:5">
+        <div class="link-info">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12 1.033-.301.165-.088.344-.104.464-.104.182 0 .359.029.509.09.45.149.734.479.734.838.015.449-.39.839-1.213 1.168-.089.029-.209.075-.344.119-.45.135-1.139.36-1.333.81-.09.224-.061.524.12.868l.015.015c.06.136 1.526 3.475 4.791 4.014.255.044.435.27.42.509 0 .075-.015.149-.045.225-.24.569-1.273.988-3.146 1.271-.059.091-.12.375-.164.57-.029.179-.074.36-.134.553-.076.271-.27.405-.555.405h-.03c-.135 0-.313-.031-.538-.074-.36-.075-.765-.135-1.273-.135-.3 0-.599.015-.913.074-.6.104-1.123.464-1.723.884-.853.599-1.826 1.288-3.294 1.288-.06 0-.119-.015-.18-.015h-.149c-1.468 0-2.427-.675-3.279-1.288-.599-.42-1.107-.779-1.707-.884-.314-.045-.629-.074-.928-.074-.54 0-.958.089-1.272.149-.211.043-.391.074-.54.074-.374 0-.523-.224-.583-.42-.061-.192-.09-.389-.135-.567-.046-.181-.105-.494-.166-.57-1.918-.222-2.95-.642-3.189-1.226-.031-.063-.052-.15-.055-.225-.015-.243.165-.465.42-.509 3.264-.54 4.73-3.879 4.791-4.02l.016-.029c.18-.345.224-.645.119-.869-.195-.434-.884-.658-1.332-.809-.121-.029-.24-.075-.346-.12-1.107-.435-1.257-.93-1.197-1.273.09-.479.674-.793 1.168-.793.146 0 .27.029.383.074.42.194.789.3 1.104.3.234 0 .384-.06.465-.105l-.046-.569c-.098-1.626-.225-3.651.307-4.837C7.392 1.077 10.739.807 11.727.807l.419-.015h.06z"/></svg>
+          </div>
+          <div class="link-text"><span class="link-name">Snapchat</span><span class="link-sub">Add me</span></div>
+        </div>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
 
-                <!-- RIGHT SIDE: Button -->
-                <div class="reveal-element reveal-right flex flex-col items-center md:items-start justify-center space-y-4">
-                    <h2 class="text-3xl md:text-5xl font-extrabold font-syne tracking-tight text-white mb-2">
-                        Instagram
-                    </h2>
+      <a href="https://www.youtube.com/@musaisapaki" target="_blank" rel="noopener noreferrer" class="link-card yt reveal" style="--i:6">
+        <div class="link-info">
+          <div class="icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </div>
+          <div class="link-text"><span class="link-name">YouTube</span><span class="link-sub">Subscribe for new videos</span></div>
+        </div>
+        <span class="arrow" aria-hidden="true">↗</span>
+      </a>
 
-                    <a href="https://www.instagram.com/musaisapaki/" target="_blank" rel="noopener noreferrer" 
-                       class="insta-btn text-white font-bold px-8 py-4 rounded-2xl flex items-center space-x-3 transition-all duration-300 group">
-                        <span class="tracking-wide">Visit Instagram</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square text-sm group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
-                    </a>
-                </div>
+    </nav>
 
-            </div>
-        </section>
+    <!-- Latest Video -->
+    <section class="video-section reveal" style="--i:7" aria-label="Latest video">
+      <div class="video-header">
+        <span class="video-title"><span class="pulse-dot" aria-hidden="true"></span> Latest Video</span>
+        <a href="https://www.youtube.com/@musaisapaki" target="_blank" rel="noopener noreferrer" class="video-yt-link">Watch on YouTube &rsaquo;</a>
+      </div>
+      <div class="video-container" id="videoContainer">
+        <button class="video-facade" id="videoFacade" type="button" aria-label="Play latest video">
+          <span class="play-btn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+          <span class="facade-label">Tap to play</span>
+        </button>
+      </div>
+    </section>
 
+    <p class="copyright reveal" style="--i:8">© <span id="year"></span> Musa</p>
 
-        <!-- ================= TIKTOK SECTION ================= -->
-        <!-- Left: Button | Right: Logo -->
-        <section class="section-snap min-h-screen w-full flex items-center justify-center px-6 py-16 relative">
-            <div class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center z-10">
-                
-                <!-- LEFT SIDE: Button -->
-                <div class="reveal-element reveal-left flex flex-col items-center md:items-start justify-center space-y-4 order-2 md:order-1">
-                    <h2 class="text-3xl md:text-5xl font-extrabold font-syne tracking-tight text-white mb-2">
-                        TikTok
-                    </h2>
+  </main>
 
-                    <a href="https://www.tiktok.com/@musaisapaki" target="_blank" rel="noopener noreferrer" 
-                       class="tiktok-btn text-white font-bold px-8 py-4 rounded-2xl flex items-center space-x-3 transition-all duration-300 group">
-                        <span class="tracking-wide">Watch on TikTok</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square text-sm group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
-                    </a>
-                </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-                <!-- RIGHT SIDE: TikTok Logo -->
-                <div class="reveal-element reveal-right flex justify-center items-center order-1 md:order-2">
-                    <div class="relative group">
-                        <!-- Neon ambient blur -->
-                        <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-pink-600 rounded-3xl blur-2xl opacity-30 group-hover:opacity-75 transition duration-700"></div>
-                        
-                        <!-- Logo Card -->
-                        <div class="relative w-56 h-56 md:w-72 md:h-72 glass-card rounded-3xl flex items-center justify-center tiktok-glow group-hover:scale-105 transition-transform duration-500">
-                            <i class="fa-brands fa-tiktok text-7xl md:text-8xl text-white drop-shadow-[2px_2px_0px_rgba(255,0,80,1)] hover:drop-shadow-[-2px_-2px_0px_rgba(0,242,254,1)] transition-all"></i>
-                        </div>
-                    </div>
-                </div>
+  <script>
+    (function () {
+      /* Lazy video: loads on click. Uploads playlist always shows the newest video. */
+      document.getElementById('videoFacade').addEventListener('click', function () {
+        document.getElementById('videoContainer').innerHTML =
+          '<iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=UUWQRswUdIkqT48iiJCdT8Ig&autoplay=1" ' +
+          'title="Latest YouTube video" ' +
+          'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" ' +
+          'referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+      });
 
-            </div>
-        </section>
+      /* Toast */
+      var toast = document.getElementById('toast'), toastTimer;
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 2000);
+      }
 
-
-        <!-- ================= SNAPCHAT SECTION ================= -->
-        <!-- Left: Button | Right: Logo -->
-        <section class="section-snap min-h-screen w-full flex items-center justify-center px-6 py-16 relative">
-            <div class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center z-10">
-                
-                <!-- LEFT SIDE: Button -->
-                <div class="reveal-element reveal-left flex flex-col items-center md:items-start justify-center space-y-4 order-2 md:order-1">
-                    <h2 class="text-3xl md:text-5xl font-extrabold font-syne tracking-tight text-white mb-2">
-                        Snapchat
-                    </h2>
-
-                    <a href="https://www.snapchat.com/@musaisapaki" target="_blank" rel="noopener noreferrer" 
-                       class="snap-btn px-8 py-4 rounded-2xl flex items-center space-x-3 transition-all duration-300 group">
-                        <span class="tracking-wide">Add on Snapchat</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square text-sm group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
-                    </a>
-                </div>
-
-                <!-- RIGHT SIDE: Snapchat Logo -->
-                <div class="reveal-element reveal-right flex justify-center items-center order-1 md:order-2">
-                    <div class="relative group">
-                        <!-- Yellow Glow -->
-                        <div class="absolute -inset-1 bg-yellow-400 rounded-3xl blur-2xl opacity-20 group-hover:opacity-60 transition duration-700"></div>
-                        
-                        <!-- Logo Card -->
-                        <div class="relative w-56 h-56 md:w-72 md:h-72 glass-card rounded-3xl flex items-center justify-center snap-glow group-hover:scale-105 transition-transform duration-500 border border-yellow-400/30">
-                            <div class="w-32 h-32 md:w-40 md:h-40 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg">
-                                <i class="fa-brands fa-snapchat text-6xl md:text-7xl text-black"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- ================= YOUTUBE SECTION ================= -->
-        <!-- Centered Layout: Video Player + Channel Link -->
-        <section class="section-snap min-h-screen w-full flex items-center justify-center px-6 py-16 relative">
-            <div class="max-w-4xl w-full flex flex-col items-center text-center space-y-8 z-10">
-                
-                <!-- Section Title -->
-                <div class="reveal-element reveal-up flex flex-col items-center space-y-2">
-                    <h2 class="text-4xl md:text-6xl font-extrabold font-syne tracking-tight text-white">
-                        YouTube
-                    </h2>
-                </div>
-
-                <!-- Embedded Video Container -->
-                <div class="reveal-element reveal-up w-full">
-                    <div class="relative w-full aspect-video rounded-3xl overflow-hidden glass-card p-2 md:p-3 yt-glow border border-red-500/20">
-                        <iframe 
-                            class="w-full h-full rounded-2xl"
-                            src="https://www.youtube.com/embed?listType=playlist&list=UUWQRswUdIkqT48iiJCdT8Ig" 
-                            title="musaisapaki YouTube Uploads" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
-
-                <!-- Subscribe CTA Button -->
-                <div class="reveal-element reveal-up">
-                    <a href="https://www.youtube.com/channel/UCWQRswUdIkqT48iiJCdT8Ig" target="_blank" rel="noopener noreferrer" 
-                       class="yt-btn text-white font-bold px-10 py-4 rounded-2xl inline-flex items-center space-x-3 transition-all duration-300 group">
-                        <i class="fa-brands fa-youtube text-xl"></i>
-                        <span class="tracking-wide">Subscribe to Channel</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square text-sm group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
-                    </a>
-                </div>
-
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="w-full py-8 text-center text-xs text-gray-600 border-t border-gray-900 bg-obsidian">
-        <p>&copy; <span id="year"></span> musaisapaki. All rights reserved.</p>
-    </footer>
-
-    <!-- Scroll Reveal JavaScript Animation Handler -->
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Intersection Observer for Smooth Scroll Animations
-        document.addEventListener('DOMContentLoaded', () => {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.25 // Triggers when 25% of element is visible
-            };
-
-            const revealObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, observerOptions);
-
-            // Observe all reveal elements
-            const revealElements = document.querySelectorAll('.reveal-element');
-            revealElements.forEach(el => revealObserver.observe(el));
+      /* Clipboard with fallback */
+      function copy(text) {
+        if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+        return new Promise(function (resolve, reject) {
+          var t = document.createElement('textarea');
+          t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+          document.body.appendChild(t); t.select();
+          try { document.execCommand('copy') ? resolve() : reject(); } catch (e) { reject(e); }
+          document.body.removeChild(t);
         });
-    </script>
+      }
+      document.getElementById('copyHandle').addEventListener('click', function () {
+        copy('@musaisapaki').then(function () { showToast('Handle copied ✓'); }, function () { showToast('Couldn\u2019t copy'); });
+      });
+
+      /* Cursor spotlight on cards */
+      document.querySelectorAll('.link-card').forEach(function (card) {
+        card.addEventListener('pointermove', function (e) {
+          var r = card.getBoundingClientRect();
+          card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+          card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        });
+      });
+
+      /* Avatar 3D tilt (mouse only, skipped for reduced motion) */
+      var avatar = document.querySelector('.profile-img');
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduce && window.matchMedia('(hover: hover)').matches) {
+        window.addEventListener('pointermove', function (e) {
+          var x = (e.clientX / window.innerWidth - 0.5) * 2;
+          var y = (e.clientY / window.innerHeight - 0.5) * 2;
+          avatar.style.transform = 'rotateY(' + (x * 14) + 'deg) rotateX(' + (-y * 14) + 'deg)';
+        });
+        document.addEventListener('pointerleave', function () { avatar.style.transform = ''; });
+      }
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
 </body>
 </html>
